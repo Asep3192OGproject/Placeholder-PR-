@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload and Display</title>
+    <style>
+        #uploadedFile {
+            margin-top: 20px;
+        }
+        #uploadedFile img {
+            max-width: 100%;
+            height: auto;
+        }
+        #uploadedFile iframe {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload and Display a File</h1>
+    <input type="file" id="fileInput">
+    <div id="uploadedFile"></div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const fileReader = new FileReader();
+
+            fileReader.onload = function(e) {
+                const uploadedFileDiv = document.getElementById('uploadedFile');
+                uploadedFileDiv.innerHTML = '';
+
+                const fileURL = e.target.result;
+                const fileType = file.type;
+
+                if (fileType.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = fileURL;
+                    uploadedFileDiv.appendChild(img);
+                } else if (fileType === 'application/pdf') {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = fileURL;
+                    uploadedFileDiv.appendChild(iframe);
+                } else {
+                    const message = document.createElement('p');
+                    message.textContent = 'File uploaded but preview is not available for this file type.';
+                    uploadedFileDiv.appendChild(message);
+                }
+            };
+
+            if (file) {
+                fileReader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

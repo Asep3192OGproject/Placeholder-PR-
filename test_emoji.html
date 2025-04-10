@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wink Emoji Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #emoji-container {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Click the Button to Spawn a Wink Emoji</h1>
+    <button id="wink-button">Wink Emoji Button</button>
+    <div id="emoji-container"></div>
+
+    <script>
+        document.getElementById("wink-button").addEventListener("click", function() {
+            const emojiContainer = document.getElementById("emoji-container");
+            const newEmoji = document.createElement("span");
+            newEmoji.textContent = "😉";
+            emojiContainer.appendChild(newEmoji);
+        });
+    </script>
+
+<p class="d-inline-flex gap-1">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Click this for creator info
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body mx-auto" style="background-color: #004080; border: none; width: 400px;">
+      <span style="background-color: black; color:white;">Created By Adam Sepp and enchanced with ChatGPT</span>
+          </a>
+
+</body>
+</html>
